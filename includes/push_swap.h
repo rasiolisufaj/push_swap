@@ -6,7 +6,7 @@
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:51:09 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/04/07 17:24:54 by raisufaj         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:15:36 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,28 @@ int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
+char			**split(char *s, char c);
 
 // Stack initialization
+void			init_stack_a(t_stack_node **a, char **argv);
+t_stack_node	*get_cheapest(t_stack_node *stack);
+void			prep_for_push(t_stack_node **stack, t_stack_node *top_node,
+					char stack_name);
+void			current_index(t_stack_node *stack);
+void			set_cheapest(t_stack_node *stack);
 
 // Nodes initialization
+void			init_nodes_a(t_stack_node *a, t_stack_node *b);
+void			init_nodes_b(t_stack_node *a, t_stack_node *b);
 
 // Stack utils
 int				stack_len(t_stack_node	*stack);
+void			min_on_top(t_stack_node **a);
 bool			stack_sorted(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
+
 // Commands
 void			pa(t_stack_node **a, t_stack_node **b, bool print);
 void			pb(t_stack_node **b, t_stack_node **a, bool print);
@@ -59,5 +70,6 @@ void			sa(t_stack_node **a, bool print);
 void			sb(t_stack_node **b, bool print);
 void			ss(t_stack_node **a, t_stack_node **b, bool print);
 // Algorithms
-
+void			sort_three(t_stack_node **a);
+void			sort_stacks(t_stack_node **a, t_stack_node **b);
 #endif

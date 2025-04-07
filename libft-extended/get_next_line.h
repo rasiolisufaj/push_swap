@@ -6,7 +6,7 @@
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:27:31 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/03/27 14:08:07 by raisufaj         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:05:03 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-# include <libft.h>
+# include "libft.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>

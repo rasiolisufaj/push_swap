@@ -42,6 +42,22 @@ int	error_duplicate(t_stack_node *a, int n)
 	return (0);
 }
 
+void	free_split(char **split_result)
+{
+	int	i;
+
+	if (split_result)
+	{
+		i = 0;
+		while (split_result[i])
+		{
+			free(split_result[i]);
+			i++;
+		}
+		free(split_result);
+	}
+}
+
 void	free_stack(t_stack_node **stack)
 {
 	t_stack_node	*tmp;

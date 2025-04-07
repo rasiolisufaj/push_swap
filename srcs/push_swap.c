@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
+	free_split(argv);
 	free_stack(&a);
 	return (0);
 }
