@@ -18,23 +18,17 @@ static int	count_words(char *s, char c)
 	bool	inside_word;
 
 	count = 0;
+	inside_word = false;
 	while (*s)
 	{
-		inside_word = false;
-		while (*s)
+		if (*s == c)
+			inside_word = false;
+		else if (!inside_word)
 		{
-			while (*s == c)
-				++s;
-			while (*s != c && *s)
-			{
-				if (!inside_word)
-				{
-					++count;
-					inside_word = true;
-				}
-				++s;
-			}
+			count++;
+			inside_word = true;
 		}
+		++s;
 	}
 	return (count);
 }
@@ -52,7 +46,7 @@ static char	*get_next_word(char *s, char c)
 		++cursor;
 	while ((s[cursor + len] != c) && s[cursor + len])
 		++len;
-	next_word = malloc((size_t)len * sizeof(char + 1));
+	next_word = malloc((size_t)(len + 1) * sizeof(char));
 	if (!next_word)
 		return (NULL);
 	while ((s[cursor] != c) && s[cursor])
