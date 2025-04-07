@@ -16,7 +16,7 @@ void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*biggest_node;
 
-	biggest_node = find_max(a);
+	biggest_node = find_max(*a);
 	if (biggest_node == *a)
 		ra(a, false);
 	else if ((*a)->next == biggest_node)
@@ -27,9 +27,9 @@ void	sort_three(t_stack_node **a)
 
 void	min_on_top(t_stack_node **a)
 {
-	while ((*a)->nbr != find_min((*a)->nbr))
+	while ((*a)->nbr != find_min(*a)->nbr)
 	{
-		if (find_min((*a)->above_median))
+		if (find_min(*a)->above_median)
 			ra(a, false);
 		else
 			rra(a, false);

@@ -6,13 +6,13 @@
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:02:29 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/04/07 18:09:19 by raisufaj         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:20:50 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words_libft(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	words;

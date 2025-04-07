@@ -6,7 +6,7 @@
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:51:09 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/04/07 20:15:36 by raisufaj         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:27:42 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
+void			free_split(char **split_result);
 char			**split(char *s, char c);
 
 // Stack initialization

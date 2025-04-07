@@ -9,12 +9,16 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = $(SRC_DIR)/handle_errors.c \
 	   $(SRC_DIR)/push_swap.c \
+	   $(SRC_DIR)/init_a_to_b.c \
+	   $(SRC_DIR)/init_b_to_a.c \
 	   $(SRC_DIR)/push.c \
 	   $(SRC_DIR)/rev_rotate.c \
 	   $(SRC_DIR)/rotate.c \
 	   $(SRC_DIR)/sort_three.c \
+	   $(SRC_DIR)/sort_stacks.c \
 	   $(SRC_DIR)/split.c \
 	   $(SRC_DIR)/stack_utils.c \
+	   $(SRC_DIR)/stack_init.c \
 	   $(SRC_DIR)/swap.c \
 
 OBJS = $(SRCS:.c=.o)
