@@ -6,7 +6,7 @@
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:51:09 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/04/04 18:40:29 by raisufaj         ###   ########.fr       */
+/*   Updated: 2025/04/06 21:28:26 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include <stdbool.h>
 # include <limits.h>
-# include "./libft-extended/libft.h"
-# include "./libft-extended/ft_printf.h"
-
+# include "../libft-extended/libft.h"
+# include "../libft-extended/ft_printf.h"
 typedef struct s_stack_node
 {
 	int					nbr;
