@@ -12,15 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-static int	handle_arguments(int argc, char **argv)
-{
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	if (argc == 2)
-		argv = split(argv[1], ' ');
-	return (0);
-}
-
 static void	handle_sorting(t_stack_node **a, t_stack_node **b)
 {
 	if (!stack_sorted(*a))
@@ -38,15 +29,22 @@ int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
+	char			**split_args;
 
 	a = NULL;
 	b = NULL;
-	if (handle_arguments(argc, argv))
+	split_args = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
+	else if (argc == 2)
+	{
+		split_args = split(argv[1], ' ');
+		argv = split_args;
+	}
 	init_stack_a(&a, argv + 1);
 	handle_sorting(&a, &b);
 	free_stack(&a);
-	if (argc == 2)
-		free_split(argv);
+	if (split_args)
+		free_split(split_args);
 	return (0);
 }
