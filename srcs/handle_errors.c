@@ -74,9 +74,11 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **a, char **split_args)
 {
 	free_stack(a);
+	if (split_args)
+		free_split(split_args);
 	ft_printf("Error\n");
 	exit (1);
 }

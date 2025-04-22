@@ -12,74 +12,87 @@
 
 #include "../includes/push_swap.h"
 
-static int	count_words(char *s, char c)
+static size_t	ft_count_word(const char *str, char c)
 {
-	int		count;
-	bool	inside_word;
+	size_t	i;
+	size_t	kaneki;
+	size_t	word;
 
-	count = 0;
-	inside_word = false;
-	while (*s)
+	i = 0;
+	kaneki = 0;
+	word = 0;
+	while (str[i])
 	{
-		if (*s == c)
-			inside_word = false;
-		else if (!inside_word)
+		if (str[i] == c)
+			kaneki = 0;
+		else if (kaneki == 0)
 		{
-			count++;
-			inside_word = true;
+			kaneki = 1;
+			word++;
 		}
-		++s;
+		i++;
 	}
-	return (count);
+	return (word);
 }
 
-static char	*get_next_word(char *s, char c)
+static size_t	ft_len_word(const char *s, char c)
 {
-	static int	cursor = 0;
-	char		*next_word;
-	int			len;
-	int			i;
+	size_t	len;
 
 	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
+}
+
+static void	ft_free(char **ptr, int k)
+{
+	int	i;
+
 	i = 0;
-	while (s[cursor] == c)
-		++cursor;
-	while ((s[cursor + len] != c) && s[cursor + len])
-		++len;
-	next_word = malloc((size_t)(len + 1) * sizeof(char));
-	if (!next_word)
-		return (NULL);
-	while ((s[cursor] != c) && s[cursor])
-		next_word[i++] = s[cursor++];
-	next_word[i] = '\0';
-	return (next_word);
+	--k;
+	while (i <= k)
+		free(ptr[i++]);
+	free(ptr);
+}
+
+static char	**ft_loop(char **ptr, const char *s, char c)
+{
+	size_t	i;
+	size_t	k;
+	size_t	word_len;
+	size_t	j;
+
+	i = 0;
+	k = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			word_len = ft_len_word(&s[i], c);
+			ptr[k] = malloc((word_len + 1) * sizeof(char));
+			if (!ptr[k])
+				return (ft_free(ptr, k), NULL);
+			j = 0;
+			while (j < word_len)
+				ptr[k][j++] = s[i++];
+			ptr[k++][j] = '\0';
+		}
+		else
+			i++;
+	}
+	ptr[k] = NULL;
+	return (ptr);
 }
 
 char	**split(char *s, char c)
 {
-	char	**result_array;
-	int		words_count;
-	int		i;
+	char	**ptr;
 
-	i = 0;
-	words_count = count_words(s, c);
-	if (!words_count)
-		exit(1);
-	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
-	if (!result_array)
+	if (!s)
 		return (NULL);
-	while (words_count-- >= 0)
-	{
-		if (i == 0)
-		{
-			result_array[i] = malloc(sizeof(char));
-			if (!result_array[i])
-				return (NULL);
-			result_array[i++][0] = '\0';
-			continue ;
-		}
-		result_array[i++] = get_next_word(s, c);
-	}
-	result_array[i] = NULL;
-	return (result_array);
+	ptr = malloc((ft_count_word(s, c) + 1) * sizeof(char *));
+	if (!ptr)
+		return (NULL);
+	return (ft_loop(ptr, s, c));
 }

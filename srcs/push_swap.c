@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		split_args = split(argv[1], ' ');
 		argv = split_args;
 	}
-	init_stack_a(&a, argv + 1);
+	init_stack_a(&a, argv + 1, split_args);
 	handle_sorting(&a, &b);
 	free_stack(&a);
 	if (split_args)
