@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 	{
-		split_args = split(argv[1], ' ');
+		split_args = ft_split(argv[1], ' ');
 		argv = split_args;
 	}
 	init_stack_a(&a, argv + 1, split_args);

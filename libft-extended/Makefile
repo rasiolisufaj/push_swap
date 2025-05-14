@@ -6,7 +6,7 @@
 #    By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 13:04:07 by raisufaj          #+#    #+#              #
-#    Updated: 2025/03/27 14:14:35 by raisufaj         ###   ########.fr        #
+#    Updated: 2025/05/14 14:21:03 by raisufaj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,13 @@ NAME = libft.a
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -f
+
+GREEN = \033[0;32m
+BLUE = \033[0;34m
+YELLOW = \033[0;33m
+RESET = \033[0m
 
 SOURCES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c \
@@ -27,24 +34,28 @@ SOURCES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstdelone_bonus.c \
 		ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstmap_bonus.c \
 		ft_lstnew_bonus.c ft_lstsize_bonus.c get_next_line_utils.c \
-		get_next_line.c get_next_line_bonus.c
+		get_next_line.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
 %.o : %.c
-		$(CC) -c $(CFLAGS) $< -o $@ -I ./
-
-.PHONY : all clean fclean re bonus
+		@echo "$(YELLOW)[Compiling] $<$(RESET)"
+		@$(CC) $(CFLAGS) -c $< -o $@ -I ./
 
 $(NAME) : $(OBJECTS)
-		ar rc $(NAME) $(OBJECTS)
+		@ar rc $(NAME) $(OBJECTS)
+		@echo "$(GREEN)[Archive Successfully Created] $(NAME)$(RESET)"
 
 all : $(NAME)
 
 clean :
-		$(RM) $(OBJECTS)
+		@$(RM) $(OBJECTS)
+		@echo "$(BLUE)[Cleaned object files]$(RESET)"
 
 fclean : clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
+		@echo "$(BLUE)[Removed] $(NAME)$(RESET)"
 
 re : fclean all
+
+.PHONY : all clean fclean re bonus

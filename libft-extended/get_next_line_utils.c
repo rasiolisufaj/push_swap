@@ -6,11 +6,11 @@
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:41:41 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/03/27 14:07:57 by raisufaj         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:07:35 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_strjoin_gnl(char *s1, char *s2)
 {

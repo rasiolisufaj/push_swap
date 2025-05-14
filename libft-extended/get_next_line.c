@@ -5,39 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: raisufaj <raisufaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 16:41:15 by raisufaj          #+#    #+#             */
-/*   Updated: 2025/03/27 14:10:02 by raisufaj         ###   ########.fr       */
+/*   Created: 2025/02/20 12:26:09 by raisufaj          #+#    #+#             */
+/*   Updated: 2025/05/14 14:07:22 by raisufaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*fill_line_buffer(int fd, char *remainder, char *buffer);
 static char	*set_line(char *line_buffer);
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder;
+	static char	*remainder[MAX_FD];
 	char		*line;
 	char		*buffer;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		free(remainder);
+		free(remainder[fd]);
 		free(buffer);
-		remainder = NULL;
+		remainder[fd] = NULL;
 		buffer = NULL;
 		return (NULL);
 	}
 	if (!buffer)
 		return (NULL);
-	line = fill_line_buffer(fd, remainder, buffer);
+	line = fill_line_buffer(fd, remainder[fd], buffer);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	remainder = set_line(line);
+	remainder[fd] = set_line(line);
 	return (line);
 }
 
@@ -81,7 +81,7 @@ static	char	*fill_line_buffer(int fd, char *remainder, char *buffer)
 		if (!remainder)
 			remainder = ft_strdup("");
 		tmp = remainder;
-		remainder = ft_strjoin_gnl(tmp, buffer);
+		remainder = ft_strjoin(tmp, buffer);
 		free(tmp);
 		tmp = NULL;
 		if (ft_strchr(buffer, '\n'))
